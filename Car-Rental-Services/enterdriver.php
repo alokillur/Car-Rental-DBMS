@@ -36,7 +36,7 @@ include('session_client.php'); ?>
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
+                        <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
                     </li>
                     <li>
                     <ul class="nav navbar-nav navbar-right">
@@ -66,7 +66,7 @@ include('session_client.php'); ?>
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
+                        <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
                     </li>
                     <li>
                         <a href="#">History</a>
@@ -141,57 +141,58 @@ include('session_client.php'); ?>
         <form action="" method="POST">
         <br style="clear: both">
           <h3 style="margin-bottom: 25px; text-align: center; font-size: 30px;"> My Drivers </h3>
-<?php
-// Storing Session
-$user_check=$_SESSION['login_client'];
+          <?php
+$user_check = $_SESSION['login_client'];
 $sql = "SELECT * FROM driver d WHERE d.client_username='$user_check' ORDER BY driver_name";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-  ?>
+?>
 
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>     </th>
-        <th> Name</th>
-        <th> Gender </th>
-        <th> DL Number </th>
-        <th> Contact </th>
-        <th> Address </th>
-        <th> Availability </th>
-      </tr>
-    </thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>DL Number</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Availability</th>
+                <th>Action</th>
+            </tr>
+        </thead>
 
-    <?PHP
-      //OUTPUT DATA OF EACH ROW
-      while($row = mysqli_fetch_assoc($result)){
-    ?>
+        <?php
+        // Output data of each row
+        while ($row = mysqli_fetch_assoc($result)) {
+        ?>
 
-  <tbody>
-    <tr>
-      <td> <span class="glyphicon glyphicon-menu-right"></span> </td>
-      <td><?php echo $row["driver_name"]; ?></td>
-      <td><?php echo $row["driver_gender"]; ?></td>
-      <td><?php echo $row["dl_number"]; ?></td>
-      <td><?php echo $row["driver_phone"]; ?></td>
-      <td><?php echo $row["driver_address"]; ?></td>
-      <td><?php echo $row["driver_availability"]; ?></td>
-      
-    </tr>
-  </tbody>
-  
-  <?php } ?>
-  </table>
+            <tbody>
+                <tr>
+                    <td><span class="glyphicon glyphicon-menu-right"></span></td>
+                    <td><?php echo $row["driver_name"]; ?></td>
+                    <td><?php echo $row["driver_gender"]; ?></td>
+                    <td><?php echo $row["dl_number"]; ?></td>
+                    <td><?php echo $row["driver_phone"]; ?></td>
+                    <td><?php echo $row["driver_address"]; ?></td>
+                    <td><?php echo $row["driver_availability"]; ?></td>
+                    <td>
+                        <a href="delete_driver.php?driver_id=<?php echo $row["driver_id"]; ?>" class="btn btn-danger">Delete</a>
+                        <a href="update_driver_form.php?driver_id=<?php echo $row["driver_id"]; ?>" class="btn btn-primary">Update</a>
+                    </td>
+                </tr>
+            </tbody>
+
+        <?php } ?>
+    </table>
     <br>
 
+<?php } else { ?>
 
-  <?php } else { ?>
+    <h4><center>0 Drivers available</center></h4>
 
-  <h4><center>0 Drivers available</center> </h4>
-
-  <?php } ?>
-
+<?php } ?>
         </form>
 
 </div>        

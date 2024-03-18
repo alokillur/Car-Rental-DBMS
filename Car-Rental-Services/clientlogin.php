@@ -42,7 +42,7 @@ if(isset($_SESSION['login_client'])){
                             <a href="index.php">Home</a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
+                            <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
                         </li>
                         <li>
                             <ul class="nav navbar-nav navbar-right">
@@ -72,7 +72,7 @@ if(isset($_SESSION['login_client'])){
                                 <a href="index.php">Home</a>
                             </li>
                             <li>
-                                <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
+                                <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
                             </li>
                             <li>
                                 <a href="#">History</a>

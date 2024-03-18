@@ -24,7 +24,7 @@ include('session_client.php'); ?>
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="index.php">
-                   PATNA CAR RENTAL </a>
+                   Car Rental Services </a>
             </div>
 
             <?php
@@ -36,7 +36,7 @@ include('session_client.php'); ?>
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
+                        <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
                     </li>
                     <li>
                         <ul class="nav navbar-nav navbar-right">
@@ -65,7 +65,7 @@ include('session_client.php'); ?>
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
+                        <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
                     </li>
                     <li>
                         <a href="#">History</a>
@@ -214,7 +214,7 @@ include('session_client.php'); ?>
                 <hr>
                 <div class="row">
                     <div class="col-sm-6">
-                        <h5>© 2018 Patna Car Rental</h5>
+                        <h5>Car Rental Services</h5>
                     </div>
                 </div>
             </div>
