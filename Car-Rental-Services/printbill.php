@@ -39,7 +39,7 @@ $conn = Connect();
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
+                        <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_client']; ?></a>
                     </li>
                     <li>
                     <ul class="nav navbar-nav navbar-right">
@@ -68,7 +68,7 @@ $conn = Connect();
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
+                        <a href="search.php"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_customer']; ?></a>
                     </li>
                     <ul class="nav navbar-nav">
             <li><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Garagge <span class="caret"></span> </a>
@@ -118,7 +118,14 @@ $id = $_GET["id"];
 $distance = NULL;
 $distance_or_days = $conn->real_escape_string($_POST['distance_or_days']);
 $fare = $conn->real_escape_string($_POST['hid_fare']);
-$total_amount = $distance_or_days * $fare;
+$total_amount = 0;
+
+if ($distance_or_days < 5) {
+    $total_amount = 300+$distance_or_days * $fare;
+} else {
+    $total_amount = $distance_or_days * $fare;
+}
+
 $car_return_date = date('Y-m-d');
 $return_status = "R";
 $login_customer = $_SESSION['login_customer'];
